@@ -7,9 +7,9 @@ export default function LessonLayout(
 
   return <>
     <Topbar xp={0} />
-    <div className="flex bg-amber-600">
+    <div className="flex">
       <Sidebar />
-      <div className="bg-amber-200 flex-1">{children}</div>
+      <div className="flex-1">{children}</div>
     </div>
   </>
 }
