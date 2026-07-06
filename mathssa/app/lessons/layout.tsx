@@ -6,7 +6,7 @@ export default function LessonLayout(
 ) {
 
   return <>
-    <Topbar xp={0} />
+    <Topbar grade={10} />
     <div className="flex">
       <Sidebar />
       <div className="flex-1">{children}</div>
