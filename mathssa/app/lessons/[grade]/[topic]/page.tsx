@@ -1,16 +1,16 @@
-import { grade10Topics } from "../data/topics"
+import { grade10Topics } from "../../data/topics"
 import { notFound } from "next/navigation"
-import TabContent from "../components/TabContent"
-import Tabs from "../components/Tabs"
+import TabContent from "../../components/TabContent"
+import Tabs from "../../components/Tabs"
 
-interface LessonPageProps {
-  params: Promise<{ topic: string }> 
+interface TopicPageProps {
+  params: Promise<{ grade: string, topic: string }> 
   searchParams: Promise<{ tab?: string }> 
 }
 
-export default async function LessonPage({ params, searchParams }: LessonPageProps) {
+export default async function TopicPage({ params, searchParams }: TopicPageProps) {
 
-  const { topic: topicSlug } = await params
+  const { grade, topic: topicSlug } = await params
   const currentTopic = grade10Topics.find((t) => t.slug === topicSlug)
   const { tab: activeTab = 'theory'} = await searchParams
 
@@ -18,6 +18,7 @@ if (!currentTopic) notFound()
 
   return (
     <main className="min-h-screen p-8">
+      <div className="lm-breadcrumb">Grade 10 → Functions</div>
       <h1 className="text-3xl font-bold text-blue-700">
         Lesson: {currentTopic.name}
       </h1>

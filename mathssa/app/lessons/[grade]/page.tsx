@@ -1,4 +1,4 @@
-import { grade10Topics } from "./data/topics"
+import { grade10Topics } from "../data/topics"
 import Link from "next/link"
 
 export default function LessonsPage() {
