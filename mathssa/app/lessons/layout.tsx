@@ -8,10 +8,12 @@ export default function LessonLayout(
 
   return <div className="relative bg-navy-deep min-h-screen">
     <SymbolBackground onlyTopbar={false}/>
-    <Topbar grade={10} />
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 relative z-10">{children}</div>
+    <div className="relative z-10">
+      <Topbar grade={10} />
+      <div className="flex">
+        <Sidebar grade={10}/>
+        <div className="flex-1">{children}</div>
+      </div>
     </div>
   </div>
 }
