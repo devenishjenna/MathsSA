@@ -9,7 +9,7 @@ interface NavItemProps {
 
 export default function NavItem({ topic, grade, isActive }: NavItemProps) {
     return (    
-        <Link href={`/lessons/grade-${grade}/${topic.slug}`}>
+        <Link href={`/grade-${grade}/${topic.slug}`}>
             <li className={`px-3 py-2 cursor-pointer text-sm border-l-4 flex items-center gap-2
                 ${isActive
                 ? "bg-navy-mid border-brand-blue text-text-primary font-semibold"

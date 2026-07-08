@@ -1,5 +1,5 @@
 import Topbar from "../components/Topbar"
-import Sidebar from "./components/Sidebar"
+import Sidebar from "../components/Sidebar"
 import SymbolBackground from "../components/SymbolBackground"
 
 export default function LessonLayout(

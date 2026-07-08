@@ -38,7 +38,7 @@ export default async function GradePage({ params }: GradePageProps) {
           {topics.map((topic) => 
           <div key={topic.id} className=" bg-navy-mid border border-white/8 rounded-xl border-l-4 border-l-brand-blue text-text-primary">
             <Link 
-              href={`/lessons/${gradeSlug}/${topic.slug}`}
+              href={`/${gradeSlug}/${topic.slug}`}
               className="flex items-center gap-3 p-4 bg-navy-mid border-white/8 hover:bg-navy-light transition-colors text-text-primary"
             >
               <div className="flex flex-col gap-1">

@@ -14,7 +14,7 @@ export default function Tabs({ activeTab, topicSlug }: TabsProps) {
 
 return <div>
     {tabs.map((tab) => 
-      <Link key={tab} href={`/lessons/${topicSlug}?tab=${tab.toLowerCase()}`}
+      <Link key={tab} href={`/${topicSlug}?tab=${tab.toLowerCase()}`}
           className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px cursor-pointer ${
             activeTab === tab.toLowerCase()
               ? 'border-blue-500 text-blue-600'

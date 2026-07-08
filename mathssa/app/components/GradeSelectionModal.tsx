@@ -32,7 +32,7 @@ export function GradeSelector({ isOpen, onClose }: GradeSelectorProps) {
 
         {grades.map(grade => 
           grade.isAvailable
-            ? <Link key={grade.grade} href={`/lessons/grade-${grade.grade}`}
+            ? <Link key={grade.grade} href={`/grade-${grade.grade}`}
                 className="text-xl bg-navy-deep border border-white/8 rounded-xl p-4 border-l-4 border-l-brand-blue text-text-muted"
                 >Grade {`${grade.grade}`}
               </Link>
