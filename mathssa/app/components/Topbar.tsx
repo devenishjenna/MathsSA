@@ -17,7 +17,7 @@ export default function Topbar({ grade }: TopbarProps) {
             {/* grade pill */}
             <div className="flex items-center gap-3">
                 {grade && (
-                <div className="text-sm px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
+                <div className="text-l px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
                     Grade {grade}
                 </div>
                 )}

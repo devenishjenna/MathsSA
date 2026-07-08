@@ -34,7 +34,7 @@ interface SymbolBackgroundProps {
 
 export default function SymbolBackground({ onlyTopbar }: SymbolBackgroundProps) {
   
-  const symbols = generateSymbols(18, 7) // TODO: this needs to change depending on the screen size
+  const symbols = generateSymbols(18, 33) // TODO: this needs to change depending on the screen size
   // TODO: only generate the first row of symbols when onlyTopbar = true and maybe the size and frequency will change
   
   return <div className="absolute inset-0" 
