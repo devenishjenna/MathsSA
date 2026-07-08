@@ -4,10 +4,10 @@ import Hero from "./components/Hero"
 
 export default function Home() {
   return <>
-    <main className="min-h-screen bg-navy-deep relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden">
        
         <Topbar />
-        <SymbolBackground onlyTopbar={false}/>
+        {/* <SymbolBackground onlyTopbar={false}/> */}
         <Hero />
    
     </main>
