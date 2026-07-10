@@ -1,13 +1,11 @@
 import Topbar from "../components/Topbar"
 import Sidebar from "../components/Sidebar"
-import SymbolBackground from "../components/SymbolBackground"
 
 export default function LessonLayout(
   { children }: {children: React.ReactNode}
 ) {
 
   return <div className="relative min-h-screen">
-    {/* <SymbolBackground onlyTopbar={false}/> */}
     <div className="relative z-10">
       <Topbar grade={10} />
       <div className="flex">

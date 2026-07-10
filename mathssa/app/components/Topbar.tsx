@@ -7,7 +7,7 @@ interface TopbarProps {
 export default function Topbar({ grade }: TopbarProps) {
 
     return (
-        <div className="sticky top-0 h-13 border-b border-navy-mid px-6 flex items-center justify-between z-10">
+        <div className="sticky top-0 h-14 border-b border-navy-mid px-6 flex items-center justify-between z-10">
             
             {/* logo with link to home */}
             <Link href="/" className="text-lg font-bold text-text-primary">

@@ -15,11 +15,12 @@
   --color-text-dark: #0D1B2A;
   --font-caveat: "Caveat", cursive;
 }
-
+/* TODO: maybe make the background fixed so that the topics and content are "floating" */
 body {
   background-color: #0D1B2A;
   background-image: url('../public/symbols-tile.svg');
   background-repeat: repeat;
+  background-attachment: fixed;
   background-size: 320px 320px;
   color: #F0F4F8;
   font-family: Arial, Helvetica, sans-serif;
