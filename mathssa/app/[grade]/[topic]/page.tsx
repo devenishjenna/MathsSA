@@ -27,20 +27,20 @@ if (!currentTopic) notFound()
 
       {/* breadcrumb */}
       <div
-        className="text-xs text-text-muted mb-2 flex gap-1"
+        className="text-xs text-text-muted mb-2 flex gap-1 align-items"
       >
         <Link 
           href={`/${gradeSlug}`}
           className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 text-text-muted"
         >Grade {grade}
         </Link>
-        <span className="text-xl">›</span>
+        <span className="text-2xl">›</span>
         <span 
           className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 text-text-muted"
         >
         {currentTopic.section}
         </span>
-        <span className="text-xl">›</span>
+        <span className="text-2xl">›</span>
         <span 
           className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 border-l-brand-blue text-text-muted"
         >
@@ -57,6 +57,7 @@ if (!currentTopic) notFound()
       <Tabs activeTab={activeTab} topicSlug={topicSlug} gradeSlug={gradeSlug}/>
 
       {/* main content */}
+      {/* need add statuses for each tab */}
       <div className={`bg-content min-h-screen p-8 
         ${activeTab === 'lesson'
           ? 'rounded-tr rounded-lb rounded-rb'
