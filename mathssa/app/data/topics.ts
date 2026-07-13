@@ -1,6 +1,6 @@
 // INTERFACES
 interface Grade {
-  grade: string
+  grade: number
   isAvailable: boolean
 }
 
@@ -18,9 +18,9 @@ export interface Topic {
 
 // DATA
 export const grades: Grade[] = [
-    {grade: '10', isAvailable: true},
-    {grade: '11', isAvailable: true},
-    {grade: '12', isAvailable: false}
+    {grade: 10, isAvailable: true},
+    {grade: 11, isAvailable: true},
+    {grade: 12, isAvailable: false}
   ]
 
 export const grade10Topics: Topic[] = [

@@ -8,7 +8,7 @@ interface TabsProps {
 
 export default function Tabs({ activeTab, topicSlug, gradeSlug }: TabsProps) {
 
-  const tabs = ['theory', 'explorer', 'practice', 'summary']
+  const tabs = ['lesson', 'explorer', 'summary', 'quiz']
   const baseClasses = 'px-4 py-2 text-sm font-medium capitalize border-b-2 -mb-px cursor-pointer'
   const activeClasses = 'border-blue-500 text-blue-600'
   const inactiveClasses = 'border-transparent text-gray-500 hover:text-gray-700'

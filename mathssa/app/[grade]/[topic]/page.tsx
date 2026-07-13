@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
 import Link from "next/link"
+import StraightLineGraphs from "@/app/components/videos/grade-10/StraightLineGraphs"
 
 interface TopicPageProps {
   params: Promise<{ grade: string, topic: string }> 
@@ -17,7 +18,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   const activeTopics = gradeToTopicsMapping[grade ?? '']
 
   const currentTopic = activeTopics.find((t) => t.slug === topicSlug)
-  const { tab: activeTab = 'theory'} = await searchParams
+  const { tab: activeTab = 'lesson'} = await searchParams
 
 if (!currentTopic) notFound()
 
@@ -42,19 +43,19 @@ if (!currentTopic) notFound()
 
       {/* main content */}
       <div className="bg-content min-h-screen p-8">
-        <TabContent isActive={activeTab==='theory'}>
-            This is the theory content
+        <TabContent isActive={activeTab==='lesson'}>
+            <StraightLineGraphs />
         </TabContent>
 
         <TabContent isActive={activeTab==='explorer'}>
             This is the explorer content
         </TabContent>
         
-        <TabContent isActive={activeTab==='practice'}>
+        <TabContent isActive={activeTab==='summary'}>
             This is the practice content
         </TabContent>
 
-        <TabContent isActive={activeTab==='summary'}>
+        <TabContent isActive={activeTab==='quiz'}>
             This is the summary content
         </TabContent>
       </div>
