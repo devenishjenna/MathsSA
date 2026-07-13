@@ -12,15 +12,15 @@ export default function GradePill({ activeGrade }: GradePillProps) {
   const [isOpen, setIsOpen] = useState(false)
   console.log("isOpen:", isOpen)
 
-  return <div className="relative">
-  <button 
-    onClick={() => setIsOpen((prev) => !prev)}
-    className="text-l px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
-        Grade {activeGrade}
+  return <div className="relative flex justify-center">
+    <button 
+      onClick={() => setIsOpen((prev) => !prev)}
+      className="text-l px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
+          Grade {activeGrade} ▾
     </button>
 
     {isOpen && 
-      <div className="absolute top-full">
+      <div className="flex flex-col whitespace-nowrap px-3 py-1 gap-2 absolute top-full mt-2 bg-navy-mid border border-navy-light rounded-md shadow-2xl">
         {grades.map((grade) => (
           grade.isAvailable
           ? <Link 
