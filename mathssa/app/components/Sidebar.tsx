@@ -6,11 +6,11 @@ import NavItem from './NavItem'
 import { Topic } from '../data/topics'
 
 interface SidebarProps {
-    grade: number
+    activeGrade: number
 }
 
 
-export default function Sidebar({ grade }: SidebarProps) {
+export default function Sidebar({ activeGrade }: SidebarProps) {
     
     const pathname = usePathname()
     const activeSlug =pathname.split('/').pop()?.toLowerCase()
@@ -41,7 +41,7 @@ export default function Sidebar({ grade }: SidebarProps) {
                 {topics.map((topic) => <NavItem 
                     key={topic.id}
                     topic={topic}
-                    grade={grade}
+                    grade={activeGrade}
                     isActive={topic.slug === activeSlug}/>)}
                 </div>})}
         </ul>

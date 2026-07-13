@@ -1,10 +1,11 @@
 import Link from "next/link"
+import GradePill from "./GradePill"
 
 interface TopbarProps {
-    grade?: number
+    activeGrade?: number
 }
 
-export default function Topbar({ grade }: TopbarProps) {
+export default function Topbar({ activeGrade }: TopbarProps) {
 
     return (
         <div className="sticky top-0 h-14 border-b border-navy-mid px-6 flex items-center justify-between z-10">
@@ -14,14 +15,8 @@ export default function Topbar({ grade }: TopbarProps) {
                 <span className="text-brand-blue">Maths</span>SA
             </Link>
             
-            {/* grade pill */}
-            <div className="flex items-center gap-3">
-                {grade && (
-                <div className="text-l px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
-                    Grade {grade}
-                </div>
-                )}
-            </div>
+            {/* grade pill - only mount if there is an active grade*/}
+            {activeGrade && <GradePill activeGrade={activeGrade}/>}
 
             {/* sign up or log in links */}
             <div className="flex items-center gap-3">

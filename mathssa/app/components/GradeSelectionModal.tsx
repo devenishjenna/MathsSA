@@ -1,25 +1,16 @@
 "use client"
 
 import Link from "next/link"
+import { grades } from "../data/topics"
 
 interface GradeSelectorProps {
   isOpen: boolean
   onClose: () => void
 }
 
-interface Grade {
-  grade: string
-  isAvailable: boolean
-}
-
 export function GradeSelector({ isOpen, onClose }: GradeSelectorProps) {
   if (!isOpen) return null
 
-  const grades: Grade[] = [
-    {grade: '10', isAvailable: true},
-    {grade: '11', isAvailable: false},
-    {grade: '12', isAvailable: false}
-  ]
   return  <>
     {/* Overlay */}
     <div className="fixed inset-0 bg-black/40 z-40 flex items-center justify-center" onClick={onClose}>

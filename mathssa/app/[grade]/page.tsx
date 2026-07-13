@@ -1,5 +1,4 @@
-import { grade10Topics } from "../data/topics"
-import { Topic } from "../data/topics"
+import { grade10Topics, grade11Topics, gradeToTopicsMapping, Topic } from "../data/topics"
 import Link from "next/link"
 
 interface GradePageProps {
@@ -11,8 +10,10 @@ export default async function GradePage({ params }: GradePageProps) {
   const { grade:gradeSlug } = await params
   const grade = gradeSlug.split('-').pop()
 
+  const activeTopics = gradeToTopicsMapping[grade ?? '']
+
   // create an object with topics grouped by sections
-  const groupedSections: Record<string, Topic[]> = grade10Topics.reduce((accumulator, topic) => {
+  const groupedSections: Record<string, Topic[]> = activeTopics.reduce((accumulator, topic) => {
     const section = topic.section
 
     if (!accumulator[section]) {
@@ -27,7 +28,7 @@ export default async function GradePage({ params }: GradePageProps) {
   // maybe you could add formulas in the topic card -- strgiht line y = mx + c??? 
   return (
     <main className="p-8">
-      <h1 className="text-3xl font-bold text-text-primary mb-6">Grade {grade} Topics</h1>
+      <h1 className="text-3xl font-bold text-text-primary mb-6">Grade {grade}</h1>
       
     <div className="flex flex-col gap-3">
       {Object.entries(groupedSections).map(([section, topics]) => (<div key={section}>

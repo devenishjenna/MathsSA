@@ -7,9 +7,9 @@ export default function LessonLayout(
 
   return <div className="relative min-h-screen">
     <div className="relative z-10">
-      <Topbar grade={10} />
+      <Topbar activeGrade={10} />
       <div className="flex">
-        <Sidebar grade={10}/>
+        <Sidebar activeGrade={10}/>
         <div className="flex-1">{children}</div>
       </div>
     </div>

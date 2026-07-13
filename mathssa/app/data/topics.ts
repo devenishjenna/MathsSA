@@ -1,3 +1,9 @@
+// INTERFACES
+interface Grade {
+  grade: string
+  isAvailable: boolean
+}
+
 export interface Topic {
   id: number
   name: string
@@ -9,6 +15,13 @@ export interface Topic {
   quizCount: number
   description: string
 }
+
+// DATA
+export const grades: Grade[] = [
+    {grade: '10', isAvailable: true},
+    {grade: '11', isAvailable: false},
+    {grade: '12', isAvailable: false}
+  ]
 
 export const grade10Topics: Topic[] = [
 
@@ -281,3 +294,326 @@ export const grade10Topics: Topic[] = [
     description: 'Use Venn diagrams to represent events, calculate probabilities and identify unions and intersections.',
   },
 ]
+
+export const grade11Topics: Topic[] = [
+
+  // ── ALGEBRA ──────────────────────────────────────────
+  {
+    id: 101,
+    name: 'Exponents and surds',
+    slug: 'exponents-and-surds',
+    section: 'Algebra',
+    isDone: false,
+    videoCount: 3,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Simplify expressions involving rational exponents and surds using the laws of exponents.',
+  },
+  {
+    id: 102,
+    name: 'Equations and inequalities',
+    slug: 'equations-and-inequalities',
+    section: 'Algebra',
+    isDone: false,
+    videoCount: 3,
+    hasExplorer: false,
+    quizCount: 3,
+    description: 'Solve quadratic, cubic, simultaneous and literal equations as well as quadratic inequalities.',
+  },
+  {
+    id: 103,
+    name: 'Nature of roots',
+    slug: 'nature-of-roots',
+    section: 'Algebra',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Use the discriminant to determine the nature of roots of a quadratic equation.',
+  },
+  {
+    id: 104,
+    name: 'Number patterns',
+    slug: 'number-patterns',
+    section: 'Algebra',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Investigate arithmetic and geometric sequences and derive general terms and formulae.',
+  },
+
+  // ── FUNCTIONS AND GRAPHS ─────────────────────────────
+  {
+    id: 105,
+    name: 'Functions and inverses',
+    slug: 'functions-and-inverses',
+    section: 'Functions and Graphs',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Understand the concept of inverse functions and determine inverses of linear and quadratic functions.',
+  },
+  {
+    id: 106,
+    name: 'Quadratic functions',
+    slug: 'quadratic-functions',
+    section: 'Functions and Graphs',
+    isDone: false,
+    videoCount: 3,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Investigate y = a(x + p)² + q and understand the effect of a, p and q on the parabola.',
+  },
+  {
+    id: 107,
+    name: 'Hyperbolic functions',
+    slug: 'hyperbolic-functions',
+    section: 'Functions and Graphs',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Investigate y = a/(x + p) + q and understand the effect of parameters on the hyperbola.',
+  },
+  {
+    id: 108,
+    name: 'Exponential functions',
+    slug: 'exponential-functions',
+    section: 'Functions and Graphs',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Investigate y = ab^(x+p) + q and understand exponential growth and decay with transformations.',
+  },
+  {
+    id: 109,
+    name: 'Logarithmic functions',
+    slug: 'logarithmic-functions',
+    section: 'Functions and Graphs',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Understand logarithms as the inverse of exponential functions and apply log laws.',
+  },
+
+  // ── FINANCE, GROWTH AND DECAY ────────────────────────
+  {
+    id: 110,
+    name: 'Simple and compound decay',
+    slug: 'simple-and-compound-decay',
+    section: 'Finance, Growth and Decay',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Apply simple and compound decay formulae to real-world depreciation problems.',
+  },
+  {
+    id: 111,
+    name: 'Timelines and interest rates',
+    slug: 'timelines-and-interest-rates',
+    section: 'Finance, Growth and Decay',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Use timelines to solve problems involving changing interest rates and investment periods.',
+  },
+  {
+    id: 112,
+    name: 'Annuities',
+    slug: 'annuities',
+    section: 'Finance, Growth and Decay',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Calculate future and present values of annuities for savings and loan repayments.',
+  },
+
+  // ── TRIGONOMETRY ─────────────────────────────────────
+  {
+    id: 113,
+    name: 'Trigonometric identities',
+    slug: 'trigonometric-identities',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 2,
+    description: 'Derive and apply fundamental trigonometric identities to simplify and prove expressions.',
+  },
+  {
+    id: 114,
+    name: 'Reduction formulae',
+    slug: 'reduction-formulae',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Use reduction formulae to simplify trigonometric expressions in any quadrant.',
+  },
+  {
+    id: 115,
+    name: 'Compound and double angles',
+    slug: 'compound-and-double-angles',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 3,
+    hasExplorer: false,
+    quizCount: 3,
+    description: 'Derive and apply compound angle and double angle formulae for sin, cos and tan.',
+  },
+  {
+    id: 116,
+    name: 'Solving trigonometric equations',
+    slug: 'solving-trig-equations',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 2,
+    description: 'Solve trigonometric equations in specified intervals using identities and general solutions.',
+  },
+  {
+    id: 117,
+    name: 'Trigonometric graphs',
+    slug: 'trigonometric-graphs',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Sketch and interpret transformed trig graphs with amplitude, period and phase shift changes.',
+  },
+  {
+    id: 118,
+    name: '2D trigonometry problems',
+    slug: '2d-trigonometry-problems',
+    section: 'Trigonometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 2,
+    description: 'Apply the sine rule, cosine rule and area rule to solve two-dimensional problems.',
+  },
+
+  // ── EUCLIDEAN GEOMETRY ───────────────────────────────
+  {
+    id: 119,
+    name: 'Circle geometry',
+    slug: 'circle-geometry',
+    section: 'Euclidean Geometry',
+    isDone: false,
+    videoCount: 3,
+    hasExplorer: false,
+    quizCount: 3,
+    description: 'Prove and apply theorems about angles, chords and tangents in and around circles.',
+  },
+  {
+    id: 120,
+    name: 'Similar triangles',
+    slug: 'similar-triangles',
+    section: 'Euclidean Geometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 2,
+    description: 'Prove and apply the conditions for similarity and use proportionality theorems.',
+  },
+
+  // ── MEASUREMENT ──────────────────────────────────────
+  {
+    id: 121,
+    name: 'Surface area and volume',
+    slug: 'surface-area-and-volume',
+    section: 'Measurement',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Calculate surface area and volume of prisms, cylinders, pyramids, cones and spheres.',
+  },
+
+  // ── ANALYTICAL GEOMETRY ──────────────────────────────
+  {
+    id: 122,
+    name: 'Equation of a circle',
+    slug: 'equation-of-a-circle',
+    section: 'Analytical Geometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Determine the equation of a circle with centre at the origin and at any point.',
+  },
+  {
+    id: 123,
+    name: 'Equation of a tangent',
+    slug: 'equation-of-a-tangent',
+    section: 'Analytical Geometry',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Find the equation of a tangent to a circle at a given point using analytical geometry.',
+  },
+
+  // ── STATISTICS ───────────────────────────────────────
+  {
+    id: 124,
+    name: 'Regression and correlation',
+    slug: 'regression-and-correlation',
+    section: 'Statistics',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Draw scatter plots, determine lines of best fit and interpret correlation coefficients.',
+  },
+  {
+    id: 125,
+    name: 'Histograms and frequency polygons',
+    slug: 'histograms-and-frequency-polygons',
+    section: 'Statistics',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 1,
+    description: 'Draw and interpret histograms, frequency polygons and ogives for grouped data.',
+  },
+
+  // ── PROBABILITY ──────────────────────────────────────
+  {
+    id: 126,
+    name: 'Counting principles',
+    slug: 'counting-principles',
+    section: 'Probability',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: true,
+    quizCount: 2,
+    description: 'Apply the fundamental counting principle, permutations and combinations to count outcomes.',
+  },
+  {
+    id: 127,
+    name: 'Probability rules',
+    slug: 'probability-rules',
+    section: 'Probability',
+    isDone: false,
+    videoCount: 2,
+    hasExplorer: false,
+    quizCount: 2,
+    description: 'Apply the addition rule, complementary events and conditional probability to solve problems.',
+  },
+]
+
+export const gradeToTopicsMapping: Record<string, Topic[]> = {
+  "10": grade10Topics,
+  "11": grade11Topics
+}
