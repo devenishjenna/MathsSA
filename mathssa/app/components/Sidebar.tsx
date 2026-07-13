@@ -1,23 +1,23 @@
 "use client"
 
-import { grade10Topics } from '../data/topics'
+import { gradeToTopicsMapping, Topic } from "../data/topics"
 import { usePathname } from 'next/navigation'
 import NavItem from './NavItem'
-import { Topic } from '../data/topics'
 
 interface SidebarProps {
     activeGrade: number
 }
 
-
 export default function Sidebar({ activeGrade }: SidebarProps) {
     
     const pathname = usePathname()
     const activeSlug =pathname.split('/').pop()?.toLowerCase()
-
+    
     // TODO: this is repeated
     // create an object with topics grouped by sections
-    const groupedSections: Record<string, Topic[]> = grade10Topics.reduce((accumulator, topic) => {
+    const activeTopics = gradeToTopicsMapping[activeGrade ?? '']
+
+    const groupedSections: Record<string, Topic[]> = activeTopics.reduce((accumulator, topic) => {
         const section = topic.section
 
         if (!accumulator[section]) {

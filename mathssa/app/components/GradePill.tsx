@@ -22,23 +22,21 @@ export default function GradePill({ activeGrade }: GradePillProps) {
     {isOpen && 
       <div className="absolute top-full">
         {grades.map((grade) => (
-          <Link 
-            key={grade.grade} 
-            href={`/grade-${grade.grade}`} 
-            onClick={() => setIsOpen((prev) => !prev)}
-            className="block"
-          >Grade {grade.grade}
-          </Link>
+          grade.isAvailable
+          ? <Link 
+              key={grade.grade} 
+              href={`/grade-${grade.grade}`} 
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="block"
+            >Grade {grade.grade}
+            </Link>
+          : <span 
+              key={grade.grade} 
+              className="block text-text-muted"
+            >Grade {grade.grade}
+            </span>
         ))} 
       </div>
     }
     </div>
 }
-
-
-// <div className="flex items-center gap-3">
-//     <div className="text-l px-3 py-1 bg-navy-mid border border-navy-light rounded-full text-text-muted">
-//         Grade {activeGrade}
-//     </div>
-// </div>
-

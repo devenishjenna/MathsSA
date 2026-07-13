@@ -1,4 +1,4 @@
-import { grade10Topics } from "../../data/topics"
+import { gradeToTopicsMapping } from "../../data/topics"
 import { notFound } from "next/navigation"
 import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
@@ -14,7 +14,9 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
   const { grade:gradeSlug, topic: topicSlug } = await params
   const grade = gradeSlug.split('-').pop()
 
-  const currentTopic = grade10Topics.find((t) => t.slug === topicSlug)
+  const activeTopics = gradeToTopicsMapping[grade ?? '']
+
+  const currentTopic = activeTopics.find((t) => t.slug === topicSlug)
   const { tab: activeTab = 'theory'} = await searchParams
 
 if (!currentTopic) notFound()

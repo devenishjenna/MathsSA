@@ -1,4 +1,4 @@
-import { grade10Topics, grade11Topics, gradeToTopicsMapping, Topic } from "../data/topics"
+import { gradeToTopicsMapping, Topic } from "../data/topics"
 import Link from "next/link"
 
 interface GradePageProps {

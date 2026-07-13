@@ -19,7 +19,7 @@ export interface Topic {
 // DATA
 export const grades: Grade[] = [
     {grade: '10', isAvailable: true},
-    {grade: '11', isAvailable: false},
+    {grade: '11', isAvailable: true},
     {grade: '12', isAvailable: false}
   ]
 
