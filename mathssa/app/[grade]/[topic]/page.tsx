@@ -1,9 +1,12 @@
 import { gradeToTopicsMapping } from "../../data/topics"
+import StraightLineAnime from "@/app/components/videos/grade-10/animeStraightLineGraphs"
+import StraightLineGSAP from "@/app/components/videos/grade-10/gsapStraightLineGraphs"
 import { notFound } from "next/navigation"
 import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
+import Breadcrumb from "@/app/components/Breadcrumb"
 import Link from "next/link"
-import StraightLineGraphs from "@/app/components/videos/grade-10/StraightLineGraphs"
+import StraightLineGraphs from "@/app/components/videos/grade-10/CanvasStraightLineGraphs"
 
 interface TopicPageProps {
   params: Promise<{ grade: string, topic: string }> 
@@ -13,7 +16,7 @@ interface TopicPageProps {
 export default async function TopicPage({ params, searchParams }: TopicPageProps) {
 
   const { grade:gradeSlug, topic: topicSlug } = await params
-  const grade = gradeSlug.split('-').pop()
+  const grade = gradeSlug.split('-').pop() ?? '' // is this the best choice? Will this ever be undefined?
 
   const activeTopics = gradeToTopicsMapping[grade ?? '']
 
@@ -25,31 +28,10 @@ if (!currentTopic) notFound()
   return (
     <main className="min-h-screen p-8">
 
-      {/* breadcrumb */}
-      <div
-        className="text-xs text-text-muted mb-2 flex gap-1 align-items"
-      >
-        <Link 
-          href={`/${gradeSlug}`}
-          className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 text-text-muted"
-        >Grade {grade}
-        </Link>
-        <span className="text-2xl">›</span>
-        <span 
-          className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 text-text-muted"
-        >
-        {currentTopic.section}
-        </span>
-        <span className="text-2xl">›</span>
-        <span 
-          className="text-sm bg-navy-deep border py-1 px-2 border-white/8 rounded-xl border-l-4 border-l-brand-blue text-text-muted"
-        >
-        {currentTopic.name}
-        </span>
-      </div>
+      <Breadcrumb gradeSlug={gradeSlug} grade={grade} currentTopic={currentTopic}/>
 
        {/* topic heading */}
-      <h1 className="text-3xl font-bold text-text-primary mb-4">
+      <h1 className="text-3xl font-bold text-text-primary my-4">
         {currentTopic.name}
       </h1>
 
@@ -67,11 +49,11 @@ if (!currentTopic) notFound()
         </TabContent>
 
         <TabContent isActive={activeTab==='explorer'}>
-            This is the explorer content
+            <StraightLineAnime />
         </TabContent>
         
         <TabContent isActive={activeTab==='summary'}>
-            This is the practice content
+            <StraightLineGSAP />
         </TabContent>
 
         <TabContent isActive={activeTab==='quiz'}>
