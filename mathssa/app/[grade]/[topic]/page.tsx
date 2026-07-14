@@ -1,12 +1,10 @@
 import { gradeToTopicsMapping } from "../../data/topics"
-import StraightLineAnime from "@/app/components/videos/grade-10/animeStraightLineGraphs"
-import StraightLineGSAP from "@/app/components/videos/grade-10/gsapStraightLineGraphs"
 import { notFound } from "next/navigation"
 import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
 import Breadcrumb from "@/app/components/Breadcrumb"
 import Link from "next/link"
-import StraightLineGraphs from "@/app/components/videos/grade-10/CanvasStraightLineGraphs"
+import StraightLineGraphs from "@/app/components/lesson-content/grade-10/CanvasStraightLineGraphs"
 
 interface TopicPageProps {
   params: Promise<{ grade: string, topic: string }> 
@@ -49,11 +47,11 @@ if (!currentTopic) notFound()
         </TabContent>
 
         <TabContent isActive={activeTab==='explorer'}>
-            <StraightLineAnime />
+          hello
         </TabContent>
         
         <TabContent isActive={activeTab==='summary'}>
-            <StraightLineGSAP />
+          hello
         </TabContent>
 
         <TabContent isActive={activeTab==='quiz'}>
