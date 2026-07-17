@@ -18,6 +18,6 @@ export default async function LessonLayout({ children, params}: LessonLayoutProp
         <Sidebar activeGrade={activeGrade}/>
         <div className="flex-1">{children}</div>
       </div>
-    </div>
+    </div>  
   </div>
 }

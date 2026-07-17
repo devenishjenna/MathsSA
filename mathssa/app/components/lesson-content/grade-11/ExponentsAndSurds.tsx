@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react"
 
 const DURATION = 60
 
-export default function StraightLineGraphs() {
+export default function ExponentsAndSurds() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)

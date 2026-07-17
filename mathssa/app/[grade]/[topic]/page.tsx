@@ -4,7 +4,9 @@ import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
 import Breadcrumb from "@/app/components/Breadcrumb"
 import Link from "next/link"
-import StraightLineGraphs from "@/app/components/lesson-content/grade-10/CanvasStraightLineGraphs"
+import StraightLineGraphs from "@/app/components/lesson-content/grade-10/StraightLineGraphs"
+import LessonWrapper from "@/app/components/LessonWrapper"
+import Quiz from "@/app/components/Quiz"
 
 interface TopicPageProps {
   params: Promise<{ grade: string, topic: string }> 
@@ -18,32 +20,34 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
 
   const activeTopics = gradeToTopicsMapping[grade ?? '']
 
-  const currentTopic = activeTopics.find((t) => t.slug === topicSlug)
+  const activeTopic = activeTopics.find((t) => t.slug === topicSlug)
   const { tab: activeTab = 'lesson'} = await searchParams
 
-if (!currentTopic) notFound()
+if (!activeTopic) notFound()
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="min-h-screen p-2">
 
-      <Breadcrumb gradeSlug={gradeSlug} grade={grade} currentTopic={currentTopic}/>
+      {/* BREADCRUMB */}
+      <Breadcrumb gradeSlug={gradeSlug} grade={grade} activeTopic={activeTopic}/>
 
-       {/* topic heading */}
-      <h1 className="text-3xl font-bold text-text-primary my-4">
-        {currentTopic.name}
+       {/* MAIN TOPIC HEADING */}
+      <h1 className="text-3xl font-bold text-text-primary mt-1 mb-3">
+        {activeTopic.name}
       </h1>
 
-      {/* tabs */}
+      {/* TABS */}
       <Tabs activeTab={activeTab} topicSlug={topicSlug} gradeSlug={gradeSlug}/>
 
-      {/* main content */}
-      {/* need add statuses for each tab */}
-      <div className={`bg-content min-h-screen p-8 
+      {/* MAIN CONTENT */}
+      {/* TODO: need add statuses for each tab */}
+      <div className={`bg-content p-6 
         ${activeTab === 'lesson'
           ? 'rounded-tr rounded-lb rounded-rb'
           : 'rounded'}`}>
         <TabContent isActive={activeTab==='lesson'}>
-            <StraightLineGraphs />
+            <LessonWrapper activeTopic={activeTopic} grade={grade} />
+            <LessonWrapper activeTopic={activeTopic} grade={grade} />
         </TabContent>
 
         <TabContent isActive={activeTab==='explorer'}>
@@ -55,7 +59,7 @@ if (!currentTopic) notFound()
         </TabContent>
 
         <TabContent isActive={activeTab==='quiz'}>
-            This is the summary content
+            <Quiz gradeSlug={gradeSlug} topicSlug={topicSlug}/>
         </TabContent>
       </div>
     </main>
