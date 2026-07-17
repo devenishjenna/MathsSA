@@ -41,7 +41,7 @@ if (!activeTopic) notFound()
 
       {/* MAIN CONTENT */}
       {/* TODO: need add statuses for each tab */}
-      <div className={`bg-content p-6 
+      <div className={`bg-content p-4 
         ${activeTab === 'lesson'
           ? 'rounded-tr rounded-lb rounded-rb'
           : 'rounded'}`}>

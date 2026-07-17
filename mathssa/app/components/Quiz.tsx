@@ -1,4 +1,5 @@
 import { quizData, Question } from "../data/quizData"
+import QuestionCard from "./Question"
 
 interface QuizProps {
   gradeSlug: string
@@ -13,26 +14,7 @@ export default function Quiz({ gradeSlug, topicSlug }: QuizProps) {
 
     {/* QUESTION CARD */}
     {currentQuiz.map((currentQuestion) => 
-      <div className='border-2 rounded-lg flex flex-col gap-2 border-brand-blue my-1 p-2'
-        key={currentQuestion.question}>
-
-        {/* QUESTION */}
-        <span className="p-1">{currentQuestion.question}</span>
-
-        {/* OPTIONS */}
-        {currentQuestion.options.map((option, i) => 
-          <button 
-            key={option}
-            className="rounded bg-brand-blue/80 flex gap-1 p-2 mx-2 cursor-pointer hover:bg-text-muted "
-          >
-            <span className="border-2 rounded-full w-6 h-6 flex justify-center items-center bg-white/20 border-white/40 text-white"
-            >{String.fromCharCode(i + 65)}</span>  
-            <span>{option}</span>
-          
-          </button>
-        )}
-     
-      </div>
+      <QuestionCard currentQuestion={currentQuestion} />
     )}
 
   </div>

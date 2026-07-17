@@ -19,7 +19,7 @@ export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps
   
   const [progressDisplay, setProgressDisplay] = useState(0)
 
-  return <div className="border-brand-blue border-2 rounded">
+  return <div className="border-brand-blue border-2 rounded-xl">
 
     <canvas
       ref={canvasRef}
@@ -45,7 +45,7 @@ export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps
     
       {/* PLAY/PAUSE AND PROGRESS DISPLAY*/}
       <div className="flex gap-2 justify-between">
-        <button className="cursor-pointer border-2 rounded-[50%] px-1">
+        <button className="cursor-pointer border-2 rounded-[50%] w-6 h-6 flex justify-center items-center">
           ▶
         </button>
         <span>
