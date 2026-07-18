@@ -3,6 +3,7 @@
 import { useState } from "react"
 
 import { Question } from "../data/quizData"
+import MathsText from './MathsText'
 
 interface QuestionCardProps {
   currentQuestion: Question
@@ -22,7 +23,7 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
     key={currentQuestion.question}>
 
       {/* QUESTION */}
-      <span className="text-deep-navy text-base my-2 pl-1">{currentQuestion.question}</span>
+      <span className="text-deep-navy text-base my-2 pl-1"><MathsText text={currentQuestion.question} /></span>
 
       {/* OPTIONS */}
       {currentQuestion.options.map((option, i) => 
@@ -30,18 +31,21 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
           key={option}
           onClick={() => handleSelect(i)}
           disabled={isAnswered} //disabled clickability
-          className={`flex items-center gap-4 px-5 py-3 rounded-lg bg-brand-blue/10 border border-text-muted/50 
-                    text-deep-navy text-md transition-colors duration-150 hover:bg-brand-blue/20 hover:border-brand-blue
-                    ${isAnswered ? 'cursor-default ' : 'cursor-pointer'}
-                    ${isAnswered ? (selectedOption === currentQuestion.answerIndex ? 'bg-brand-green' : 'bg-red-400'): ''}
-                    `} //makes it seem to the user that it can't be clicked
+          className={`flex items-center gap-4 px-5 py-3 rounded-lg bg-brand-blue/10 border  
+                    text-deep-navy text-md
+                    ${isAnswered ? 'cursor-default ' : 'cursor-pointer transition-colors duration-150 hover:bg-brand-blue/20 hover:border-brand-blue'}
+                    ${isAnswered 
+                      ? (selectedOption === i 
+                        ? (selectedOption === currentQuestion.answerIndex ? 'bg-brand-green/20 border-brand-green' : 'bg-red-400/20 border-red-400')
+                        : 'border-text-muted/50')
+                      : 'border-text-muted/50'}
+                    `}
         >
           <span className="flex items-center justify-center w-7 h-7  shrink-0 rounded-full bg-brand-blue/70 border-2 border-white
-                  text-white text-xs ring-1 ring-brand-blue font-medium shadow-[0_0_8px_2px_var(--color-brand-blue)]/55"
-          >{String.fromCharCode(i + 65)}</span>  
-          <span>{option}</span>
+                  text-white text-xs ring-1 ring-brand-blue font-medium shadow-[0_0_8px_2px_var(--color-brand-blue)]/55" // TODO: update styling when isAnswered is true
+          >{String.fromCharCode(i + 65)}</span>
+          <MathsText text={option} />
         </button>
       )}
-     
   </div>
 }

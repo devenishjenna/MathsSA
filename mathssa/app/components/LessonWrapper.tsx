@@ -13,7 +13,9 @@ interface LessonWrapperProps {
 
 export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps) {
 
-  const LessonComponent = lessonComponentMapping[grade][activeTopic.slug]
+  const LessonComponent = lessonComponentMapping[grade]?.[activeTopic.slug]
+
+  if (!LessonComponent) return <div>Lesson coming soon...</div> // if no lesson exists in the registry
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   

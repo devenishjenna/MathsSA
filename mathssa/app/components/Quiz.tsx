@@ -1,5 +1,5 @@
 import { quizData, Question } from "../data/quizData"
-import QuestionCard from "./Question"
+import QuestionCard from "./QuestionCard"
 
 interface QuizProps {
   gradeSlug: string
@@ -14,7 +14,7 @@ export default function Quiz({ gradeSlug, topicSlug }: QuizProps) {
 
     {/* QUESTION CARD */}
     {currentQuiz.map((currentQuestion) => 
-      <QuestionCard currentQuestion={currentQuestion} />
+      <QuestionCard key={currentQuestion.question} currentQuestion={currentQuestion} />
     )}
 
   </div>

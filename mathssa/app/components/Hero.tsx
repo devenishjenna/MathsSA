@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { InlineMath } from "react-katex"
 import { GradeSelector } from "./GradeSelectionModal"
 
 export default function Hero() {
@@ -14,6 +15,7 @@ export default function Hero() {
 
             <div className="text-xs font-medium text-brand-blue uppercase tracking-widest">
               CAPS aligned · South Africa
+              <InlineMath math="x"/>
             </div>
 
             <h1 className="text-4xl font-bold text-text-primary leading-tight">

@@ -47,7 +47,6 @@ if (!activeTopic) notFound()
           : 'rounded'}`}>
         <TabContent isActive={activeTab==='lesson'}>
             <LessonWrapper activeTopic={activeTopic} grade={grade} />
-            <LessonWrapper activeTopic={activeTopic} grade={grade} />
         </TabContent>
 
         <TabContent isActive={activeTab==='explorer'}>
