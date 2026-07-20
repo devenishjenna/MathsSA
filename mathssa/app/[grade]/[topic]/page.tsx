@@ -3,8 +3,6 @@ import { notFound } from "next/navigation"
 import TabContent from "../../components/TabContent"
 import Tabs from "../../components/Tabs"
 import Breadcrumb from "@/app/components/Breadcrumb"
-import Link from "next/link"
-import StraightLineGraphs from "@/app/components/lesson-content/grade-10/StraightLineGraphs"
 import LessonWrapper from "@/app/components/LessonWrapper"
 import Quiz from "@/app/components/Quiz"
 
@@ -26,25 +24,28 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
 if (!activeTopic) notFound()
 
   return (
-    <main className="min-h-screen p-2">
+    <main className="p-2 h-[calc(100vh-60px)] flex flex-col">
+      {/* STICKY TOP SECTION */}
+      <div className="shrink-0">
+        {/* BREADCRUMB */}
+        <Breadcrumb gradeSlug={gradeSlug} grade={grade} activeTopic={activeTopic}/>
 
-      {/* BREADCRUMB */}
-      <Breadcrumb gradeSlug={gradeSlug} grade={grade} activeTopic={activeTopic}/>
+        {/* MAIN TOPIC HEADING */}
+        <h1 className="text-3xl font-bold text-text-primary mt-1 mb-3">
+          {activeTopic.name}
+        </h1>
 
-       {/* MAIN TOPIC HEADING */}
-      <h1 className="text-3xl font-bold text-text-primary mt-1 mb-3">
-        {activeTopic.name}
-      </h1>
-
-      {/* TABS */}
-      <Tabs activeTab={activeTab} topicSlug={topicSlug} gradeSlug={gradeSlug}/>
+        {/* TABS */}
+        <Tabs activeTab={activeTab} topicSlug={topicSlug} gradeSlug={gradeSlug}/>
+      </div>
 
       {/* MAIN CONTENT */}
       {/* TODO: need add statuses for each tab */}
-      <div className={`bg-content p-4 
+      <div className={`bg-content p-4 overflow-y-auto flex-1 min-h-0
         ${activeTab === 'lesson'
           ? 'rounded-tr rounded-lb rounded-rb'
-          : 'rounded'}`}>
+          : 'rounded'}`}
+          >
         <TabContent isActive={activeTab==='lesson'}>
             <LessonWrapper activeTopic={activeTopic} grade={grade} />
         </TabContent>
