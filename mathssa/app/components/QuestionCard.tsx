@@ -37,7 +37,7 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
                     ${isAnswered 
                       ? (selectedOption === i 
                         ? (selectedOption === currentQuestion.answerIndex ? 'bg-brand-green/20 border-brand-green' : 'bg-red-400/20 border-red-400')
-                        : 'border-text-muted/50')
+                        : (currentQuestion.answerIndex === i ? 'bg-brand-green/20 border-brand-green transition-colors duration-50': 'border-text-muted/50'))
                       : 'border-text-muted/50'}
                     `}
         >
@@ -47,5 +47,14 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
           <MathsText text={option} />
         </button>
       )}
+
+      <div
+      className={`p-2 transition-all duration-300
+        ${isAnswered && selectedOption !== currentQuestion.answerIndex
+          ? ""
+          : "hidden"
+        }`}
+      ><MathsText text={currentQuestion.answerExplanation}/></div>
+
   </div>
 }
