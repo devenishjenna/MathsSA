@@ -25,3 +25,8 @@ body {
   color: #F0F4F8;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* superscripts and subscripts will be 85% smaller than the surronding text
+.katex .msupsub {
+  font-size: 0.7em;
+} */

@@ -31,7 +31,7 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
           key={option}
           onClick={() => handleSelect(i)}
           disabled={isAnswered} //disabled clickability
-          className={`flex items-center gap-4 px-5 py-3 rounded-lg bg-brand-blue/10 border  
+          className={`flex items-center gap-4 p-5 rounded-lg bg-brand-blue/10 border  
                     text-deep-navy text-md
                     ${isAnswered ? 'cursor-default ' : 'cursor-pointer transition-colors duration-150 hover:bg-brand-blue/20 hover:border-brand-blue'}
                     ${isAnswered 
@@ -41,7 +41,7 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
                       : 'border-text-muted/50'}
                     `}
         >
-          <span className="flex items-center justify-center w-7 h-7  shrink-0 rounded-full bg-brand-blue/70 border-2 border-white
+          <span className="flex items-center justify-center w-7 h-7 shrink-0 rounded-full bg-brand-blue/70 border-2 border-white
                   text-white text-xs ring-1 ring-brand-blue font-medium shadow-[0_0_8px_2px_var(--color-brand-blue)]/55" // TODO: update styling when isAnswered is true
           >{String.fromCharCode(i + 65)}</span>
           <MathsText text={option} />

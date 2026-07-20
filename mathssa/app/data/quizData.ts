@@ -25,7 +25,7 @@ export const quizData: QuizData = {
           answerIndex: 0
         },
         {
-          question: "Factorise: $x^2 - 9$",
+          question: "Factorise: $x^{2} - 9$",
           options: ["$(x - 3)(x - 3)$", "$(x + 3)(x - 3)$", "$(x + 9)(x - 1)$", "$(x - 9)(x + 1)$"],
           answerIndex: 1
         },
@@ -35,7 +35,7 @@ export const quizData: QuizData = {
           answerIndex: 0
         },
         {
-          question: "Simplify: $\frac{4x^2y^3}{2xy}$",
+          question: "Simplify: $\\tfrac{4x^2y^3}{2xy}$",
           options: ["$2x^2y^2$", "$2xy^2$", "$2xy^3$", "$4xy^2$"],
           answerIndex: 1
         },
@@ -60,7 +60,7 @@ export const quizData: QuizData = {
         },
         {
           question: "Which line is parallel to $y = 4x + 1$?",
-          options: ["$y = -4x + 1$", "$y = 4x - 3$", "$y = \\frac{1}{4}x + 1$", "$y = -\\frac{1}{4}x + 3$"],
+          options: ["$y = -4x + 1$", "$y = 4x - 3$", "$y = \\tfrac{1}{4}x + 1$", "$y = -\\tfrac{1}{4}x + 3$"],
           answerIndex: 1
         },
         {
@@ -114,28 +114,29 @@ export const quizData: QuizData = {
     "exponents-and-surds": {
       quiz: [
         {
-          question: "Simplify: $\sqrt{12} + \sqrt{27}$",
-          options: ["$\sqrt{39}$", "$5\sqrt{3}$", "$6\sqrt{3}$", "$3\sqrt{5}$"],
+          question: "Simplify: $\\sqrt{12} + \\sqrt{27}$",
+          options: ["$\\sqrt{39}$", "$5\\sqrt{3}$", "$6\\sqrt{3}$", "$3\\sqrt{5}$"],
           answerIndex: 1
         },
         {
-          question: "Simplify: $x^{\frac{1}{2}} \times x^{\frac{3}{2}}$",
-          options: ["$x^2$", "$x^{\frac{3}{4}}$", "$x^{\frac{5}{2}}$", "$x$"],
+          question: "Simplify: $x^{\\tfrac{1}{2}} \\times x^{\\tfrac{3}{2}}$",
+          options: ["$x^2$", "$x^{\\tfrac{3}{4}}$", "$x^{\\tfrac{5}{2}}$", "$x$"],
           answerIndex: 0
         },
         {
-          question: "Which of the following is equal to $\sqrt[4]{x^3}$?",
-          options: ["$x^{\frac{4}{3}}$", "$x^{\frac{3}{4}}$", "$x^{12}$", "$4x^3$"],
+          question: "Which of the following is equal to $\\sqrt[4]{x^3}$? $\\tfrac{3}{4}$",
+          options: ["$x^{\\tfrac{4}{3}}$", "$x^{\\tfrac{3}{4}}$", "$x^{12}$", "$4x^3$"],
           answerIndex: 1
         },
+        
         {
           question: "Solve for $x$: $3^{x+1} = 27$",
           options: ["$x = 1$", "$x = 2$", "$x = 3$", "$x = 9$"],
           answerIndex: 1
         },
         {
-          question: "Simplify: $(\sqrt{5} + \sqrt{3})(\sqrt{5} - \sqrt{3})$",
-          options: ["$\sqrt{2}$", "$2$", "$\sqrt{15}$", "$2\sqrt{2}$"],
+          question: "Simplify: $(\\sqrt{5} + \\sqrt{3})(\\sqrt{5} - \\sqrt{3})$",
+          options: ["$\\sqrt{2}$", "$2$", "$\\sqrt{15}$", "$2\\sqrt{2}$"],
           answerIndex: 1
         }
       ]
