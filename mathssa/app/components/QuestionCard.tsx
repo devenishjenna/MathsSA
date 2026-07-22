@@ -8,9 +8,11 @@ import MathsText from './MathsText'
 interface QuestionCardProps {
   currentQuestion: Question
   onAnswered: (correct: boolean) => void
+  questionIndex: number
+  totalQuestions: number
 }
 
-export default function QuestionCard({ currentQuestion, onAnswered }: QuestionCardProps) {
+export default function QuestionCard({ currentQuestion, onAnswered, questionIndex, totalQuestions }: QuestionCardProps) {
 
   const [selectedOption, setSelectedOption] = useState<number | null>(null)
   const isAnswered = selectedOption !== null
@@ -26,7 +28,12 @@ export default function QuestionCard({ currentQuestion, onAnswered }: QuestionCa
     }
   }
 
-  return <div className='border-2 rounded-2xl flex flex-col gap-2 border-brand-blue my-1 p-2'>
+  return <div className='relative border-2 rounded-2xl flex flex-col gap-2 border-brand-blue my-1 p-2 overflow-hidden'>
+
+      {/* QUESTION LABEL */}
+      <div className="absolute -top-0.5 right-10 bg-brand-blue text-white text-xs font-medium px-3.5 py-1.5 rounded-b-lg">
+        Q{questionIndex + 1} of {totalQuestions}
+      </div>
 
       {/* QUESTION */}
       <span className="text-deep-navy text-base my-2 pl-1"><MathsText text={currentQuestion.question} /></span>

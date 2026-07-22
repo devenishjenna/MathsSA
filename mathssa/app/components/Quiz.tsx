@@ -46,8 +46,13 @@ export default function Quiz({ gradeSlug, topicSlug }: QuizProps) {
     </div>
 
     {/* QUESTION CARDS */}
-    {currentQuiz.map((currentQuestion: Question) => 
-      <QuestionCard key={currentQuestion.question} currentQuestion={currentQuestion} onAnswered={handleAnswered}/>
+    {currentQuiz.map((currentQuestion: Question, i) => 
+      <QuestionCard 
+        key={currentQuestion.question}
+        currentQuestion={currentQuestion} 
+        onAnswered={handleAnswered} 
+        questionIndex={i} 
+        totalQuestions={totalQuestions}/>
     )}
 
     {/* QUIZ SCORE */}
