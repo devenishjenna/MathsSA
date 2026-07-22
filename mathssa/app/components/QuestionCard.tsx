@@ -7,20 +7,26 @@ import MathsText from './MathsText'
 
 interface QuestionCardProps {
   currentQuestion: Question
+  onAnswered: (correct: boolean) => void
 }
 
-export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
+export default function QuestionCard({ currentQuestion, onAnswered }: QuestionCardProps) {
 
   const [selectedOption, setSelectedOption] = useState<number | null>(null)
   const isAnswered = selectedOption !== null
 
   function handleSelect(i: number) {
     if (isAnswered) return //this means the option can't be selected again or options can't change
+    
     setSelectedOption(i)
+    if (i === currentQuestion.answerIndex) {
+      onAnswered(true)
+    } else {
+      onAnswered(false)
+    }
   }
 
-  return <div className='border-2 rounded-2xl flex flex-col gap-2 border-brand-blue my-1 p-2'
-    key={currentQuestion.question}>
+  return <div className='border-2 rounded-2xl flex flex-col gap-2 border-brand-blue my-1 p-2'>
 
       {/* QUESTION */}
       <span className="text-deep-navy text-base my-2 pl-1"><MathsText text={currentQuestion.question} /></span>
@@ -48,8 +54,9 @@ export default function QuestionCard({ currentQuestion }: QuestionCardProps) {
         </button>
       )}
 
+      {/* ANSWER EXPLANATION */}
       <div
-      className={`p-2 transition-all duration-300
+      className={`p-2 transition-all duration-300 bg-brand-green/20 rounded-lg
         ${isAnswered && selectedOption !== currentQuestion.answerIndex
           ? ""
           : "hidden"
