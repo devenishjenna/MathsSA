@@ -21,7 +21,7 @@ return <div className="flex">
       >
         <div className="flex gap-2 justify-center items-center">
         {tab}
-        <span className={`w-3.5 h-3.5 rounded-full flex items-center justify-center
+        <span className={`w-3.5 h-3.5 rounded-full flex items-center justify-center border-2
           ${true // TODO: iscomplete
             ? `bg-brand-green border-brand-green ${activeTab === tab.toLowerCase() ? '' : 'group-hover:bg-brand-green/60'}`
             : 'border-current opacity-50'}`}
