@@ -19,29 +19,31 @@ export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   
-  const [progressDisplay, setProgressDisplay] = useState(0)
+  const [progress, setProgress] = useState(0)
 
-  return <div className="border-brand-blue border-2 rounded-xl">
+  return <div className="border-brand-blue border-2 rounded-xl h-full flex flex-col overflow-hidden ">
 
-    <canvas
-      ref={canvasRef}
-      width={800}
-      height={450}
-      className="w-full aspect-video"
-    ></canvas>
-
-    <LessonComponent canvasRef={canvasRef}/>
+      <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+        <canvas
+          ref={canvasRef}
+          width={800}
+          height={450}
+          className="max-w-full max-h-full w-auto h-auto"
+        ></canvas>
+      </div>
+      
+    <LessonComponent canvasRef={canvasRef} progress={progress}/>
 
     {/* CONTROLS */}
-    <div className="px-1">
+    <div className="px-1 shrink-0">
       {/* PROGRESS SLIDER */}
       <input 
         type="range"
         min={0}
         max={10}
         step={0.001}
-        value={progressDisplay}
-        onChange={((e)=>setProgressDisplay(parseFloat(e.target.value)))}
+        value={progress}
+        onChange={((e)=>setProgress(parseFloat(e.target.value)))}
         className="w-full">
       </input>
     
@@ -51,7 +53,7 @@ export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps
           ▶
         </button>
         <span>
-          progress bar: {progressDisplay}
+          progress bar: {progress}
         </span>
       </div>
     </div>

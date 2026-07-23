@@ -4,7 +4,7 @@ interface TabContentProps {
 }
 
 export default function TabContent({ children, isActive }: TabContentProps) {
-  return <div className={`${isActive ? '' : 'hidden'} text-text-dark`}>
+  return <div className={`${isActive ? 'h-full' : 'hidden'} text-text-dark`}>
     {children}
   </div>
 }
