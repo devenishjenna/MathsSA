@@ -1,41 +1,40 @@
-import { useEffect } from "react"
+import { LessonProps } from '../registry'
 
-import { LessonProps } from "../registry"
+function segmentProgress(progress: number, start: number, end: number) {
+  return Math.min(1, Math.max(0, (progress - start) / (end - start)))
+}
 
-export default function StraightLineGraphs({ canvasRef, progress }: LessonProps) {
+export default function StraightLineGraphs({ progress }: LessonProps) {
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return // return is canvas doesn't exist yet on the very first render
+  const p1 = { x: 60, y: 220 }
+  const p2 = { x: 300, y: 80 }
 
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return // return if can't get context
+  const dx = p2.x - p1.x
+  const dy = p2.y - p1.y
+  const lineLength = Math.sqrt(dx * dx + dy * dy)
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height) // clears canvas
+  const dotsReveal = segmentProgress(progress, 0, 10)
+  const lineReveal = segmentProgress(progress, 0.75, 2.5)
+  console.log('lineLength', lineLength)
+  console.log('lineReveal', lineReveal)
+  console.log('dash offset: ', lineLength * (1 - lineReveal))
+  console.log('**********************')
 
-    const p1 = { x: 150, y: 350 }
-    const p2 = { x: 600, y: 100 }
-
-    ctx.strokeStyle = '#1a1222'
-    ctx.lineWidth = 3
-    ctx.beginPath()
-    ctx.moveTo(p1.x, p1.y)
-    ctx.lineTo(p2.x, p2.y)
-    ctx.stroke()
-
-    ctx.fillStyle = '#1a1222'
-    ;[p1, p2].forEach((point) => {
-      ctx.beginPath()
-      ctx.arc(point.x, point.y, 6, 0, Math.PI * 2)
-      ctx.fill()
-    })
-
-    ctx.font = '28px sans-serif'
-    ctx.fillStyle = '#1a1222'
-    ctx.fillText('y = mx + c', 350, 380)
-
-
-  }, [canvasRef, progress])
-
-  return null
+  return (
+    <svg viewBox="0 0 360 280"> // TODO: things are rendered outside the svg box on big monitor
+      <line
+        x1={p1.x}
+        y1={p1.y}
+        x2={p2.x}
+        y2={p2.y}
+        stroke="#378ADD"
+        strokeWidth={3}
+        strokeLinecap="round"
+        strokeDasharray={lineLength} // array of dash lengths that follow the shape
+        strokeDashoffset={lineLength * (1 - lineReveal)} // how many units the first dash moves backwards
+      />
+      <circle cx={p1.x} cy={p1.y} r={5} fill="#0C447C" opacity={dotsReveal} />
+      <circle cx={p2.x} cy={p2.y} r={5} fill="#0C447C" opacity={dotsReveal} />
+    </svg>
+  )
 }
