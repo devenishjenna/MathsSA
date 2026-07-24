@@ -1,10 +1,19 @@
 import { LessonProps } from '../registry'
 
 function segmentProgress(progress: number, start: number, end: number) {
-  return Math.min(1, Math.max(0, (progress - start) / (end - start)))
+// returns portion of segment that is complete [decimal (0-1)]
+  if (progress < start) {
+    return 0 // segment hasn't started yet
+  } else if (progress > end) {
+    return 1 // segment is complete
+  } else {
+    (progress - start)/(end - start) // portion of segment that is complete
+  }
 }
 
-export default function StraightLineGraphs({ progress }: LessonProps) {
+export default function StraightLineGraphs({ progress, totalLessonTime, setTotalLessonTime }: LessonProps) {
+
+  setTotalLessonTime(20)
 
   const p1 = { x: 60, y: 220 }
   const p2 = { x: 300, y: 80 }
@@ -13,12 +22,8 @@ export default function StraightLineGraphs({ progress }: LessonProps) {
   const dy = p2.y - p1.y
   const lineLength = Math.sqrt(dx * dx + dy * dy)
 
-  const dotsReveal = segmentProgress(progress, 0, 10)
+  const dotsReveal = segmentProgress(progress, 0, totalLessonTime)
   const lineReveal = segmentProgress(progress, 0.75, 2.5)
-  console.log('lineLength', lineLength)
-  console.log('lineReveal', lineReveal)
-  console.log('dash offset: ', lineLength * (1 - lineReveal))
-  console.log('**********************')
 
   return (
     <svg viewBox="0 0 360 280"> // TODO: things are rendered outside the svg box on big monitor

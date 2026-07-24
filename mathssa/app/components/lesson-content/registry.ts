@@ -3,6 +3,8 @@ import ExponentsAndSurds from "./grade-11/ExponentsAndSurds"
 
 export interface LessonProps {
   progress: number
+  totalLessonTime: number
+  setTotalLessonTime: (totalLessonTime: number) => void
 }
 
 interface SlugComponentMap {
