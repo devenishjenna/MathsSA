@@ -16,7 +16,7 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   const mainLineReveal = segmentProgress(progress, 1, 2)
 
   // Frame 2: y = mx + c, gradient + y-intercept labels
-  const gradientArrowRev  = segmentProgress(progress, 3, 4)
+  const gradientArrowRev  = segmentProgress(progress, 2, 2.5)
   const gradientLabelRev  = segmentProgress(progress, T * 0.30, T * 0.37)
   const yIntArrowRev      = segmentProgress(progress, T * 0.38, T * 0.44)
   const yIntLabelRev      = segmentProgress(progress, T * 0.40, T * 0.47)
@@ -107,20 +107,18 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
         </MathsTextFO>
       </Reveal>
 
-      <Arrow x1={100} y1={90} x2={100} y2={200} reveal={gradientArrowRev} styling="stroke-indigo-500 stroke-[3px]"/>
+      <Arrow x1={formula_xy.x + 100} y1={formula_xy.y - 40} x2={formula_xy.x + 90} y2={formula_xy.y} reveal={gradientArrowRev} styling="stroke-indigo-500 stroke-[3px]" label="gradient"/>
 
-
-
-      {/* gradient arrow, pointing at the slope of the line */}
-      {/* <line
-        x1={155} y1={100} x2={165} y2={120}
-        stroke="#132B90" strokeWidth={1.5}
-        markerEnd="url(#arrowhead)"
-        strokeDasharray={Math.hypot(10, 55)}
-        strokeDashoffset={Math.hypot(10, 55) * (1 - gradientArrowRev)}
-        opacity={tailFade(gradientArrowRev, 0.4)}
-      /> */}
-      {/* <g clipPath="url(#clipGradientLabel)">
+     {/* gradient arrow, pointing at the slope of the line */}
+  {/* <line
+      //   x1={155} y1={100} x2={165} y2={120}
+      //   stroke="#132B90" strokeWidth={1.5}
+      //   markerEnd="url(#arrowhead)"
+      //   strokeDasharray={Math.hypot(10, 55)}
+      //   strokeDashoffset={Math.hypot(10, 55) * (1 - gradientArrowRev)}
+      //   opacity={tailFade(gradientArrowRev, 0.4)}
+      // />
+      <g clipPath="url(#clipGradientLabel)">
         <text x="130" y="30" fontSize="14" fontFamily="sans-serif" fill="#E07B39">
           gradient
         </text>

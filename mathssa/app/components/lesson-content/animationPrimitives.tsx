@@ -52,28 +52,24 @@ interface ArrowProps {
   y2: number
   reveal: number
   styling: string
-  headReveal?: number // portion of `reveal` (0–1) spent fading in the arrowhead before the line starts drawing
+  headReveal?: number
+  label?: string
+  labelOffset?: { x: number; y: number } // nudge the label away from the line
 }
 
 export function Arrow({
   x1, y1, x2, y2, reveal, styling, headReveal = 0.15,
+  label, labelOffset = { x: 0, y: -10 },
 }: ArrowProps) {
   const length = Math.hypot(x2 - x1, y2 - y1)
   const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI)
 
-  // Phase 1 (reveal: 0 → headReveal): arrowhead fades in
   const headOpacity = remap(reveal, 0, headReveal)
-
-  // Phase 2 (reveal: headReveal → 1): line draws in behind it
   const lineProgress = remap(reveal, headReveal, 1)
   const lineOpacity = tailFade(lineProgress, 0.4)
 
-  // TODO: change so that head fades in then lines comes... just make it dependent on reveal... 
-
   return (
     <>
-      {/* Arrowhead — manually positioned at the line's end and rotated to match its direction,
-          so its opacity is independent of the line's dash/opacity animation */}
       <g transform={`translate(${x2}, ${y2}) rotate(${angle})`} opacity={headOpacity}>
         <polyline points="-10 -7, 0 0, -10 7" fill="none" strokeLinecap="round" className={`${styling}`} />
       </g>
@@ -86,6 +82,17 @@ export function Arrow({
         strokeDashoffset={length * (lineProgress) + length}
         opacity={reveal}
       />
+
+      {label && (
+        <text
+          x={x1 + labelOffset.x}
+          y={y1 + labelOffset.y}
+          className={`text-base`}
+          opacity={reveal}
+        >
+          {label}
+        </text>
+      )}
     </>
   )
 }
