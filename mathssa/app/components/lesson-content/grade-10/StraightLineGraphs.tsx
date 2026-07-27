@@ -1,7 +1,7 @@
 import { LessonProps } from '../registry'
 import MathsText from '../../MathsText'
 import { segmentProgress } from '@/app/lib/animationUtils'
-import { Reveal, MathsTextFO } from '../animationPrimitives'
+import { Reveal, MathsTextFO, Arrow } from '../animationPrimitives'
 
 function tailFade(reveal: number, from = 0.7) {
   return Math.min(1, Math.max(0, (reveal - from) / (1 - from)))
@@ -16,7 +16,7 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   const mainLineReveal = segmentProgress(progress, 1, 2)
 
   // Frame 2: y = mx + c, gradient + y-intercept labels
-  const gradientArrowRev  = segmentProgress(progress, T * 0.28, T * 0.34)
+  const gradientArrowRev  = segmentProgress(progress, 3, 4)
   const gradientLabelRev  = segmentProgress(progress, T * 0.30, T * 0.37)
   const yIntArrowRev      = segmentProgress(progress, T * 0.38, T * 0.44)
   const yIntLabelRev      = segmentProgress(progress, T * 0.40, T * 0.47)
@@ -68,14 +68,6 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   return (
     <svg viewBox="0 0 500 300" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
       <defs>
-        <filter id="rough">
-          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale={3} />
-        </filter>
-
-        <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <polygon points="0 0, 7 3, 0 6" fill="#555" />
-        </marker>
 
         {/* clip rects grow left-to-right to simulate handwriting */}
         {/* <clipPath id="clipGradientLabel">
@@ -115,16 +107,20 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
         </MathsTextFO>
       </Reveal>
 
+      <Arrow x1={100} y1={90} x2={100} y2={200} reveal={gradientArrowRev} styling="stroke-indigo-500 stroke-[3px]"/>
+
+
+
       {/* gradient arrow, pointing at the slope of the line */}
       {/* <line
-        x1={155} y1={40} x2={165} y2={95}
-        stroke="#E07B39" strokeWidth={1.5} filter="url(#rough)"
+        x1={155} y1={100} x2={165} y2={120}
+        stroke="#132B90" strokeWidth={1.5}
         markerEnd="url(#arrowhead)"
         strokeDasharray={Math.hypot(10, 55)}
         strokeDashoffset={Math.hypot(10, 55) * (1 - gradientArrowRev)}
         opacity={tailFade(gradientArrowRev, 0.4)}
-      />
-      <g clipPath="url(#clipGradientLabel)">
+      /> */}
+      {/* <g clipPath="url(#clipGradientLabel)">
         <text x="130" y="30" fontSize="14" fontFamily="sans-serif" fill="#E07B39">
           gradient
         </text>
