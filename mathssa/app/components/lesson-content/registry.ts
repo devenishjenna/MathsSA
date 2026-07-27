@@ -4,18 +4,20 @@ import ExponentsAndSurds from "./grade-11/ExponentsAndSurds"
 export interface LessonProps {
   progress: number
   totalLessonTime: number
-  setTotalLessonTime: (totalLessonTime: number) => void
 }
 
-interface SlugComponentMap {
-  [slug: string]: React.ComponentType<LessonProps>
+interface SlugToLesson {
+  [slug: string]: {
+    lessonComp: React.ComponentType<LessonProps>
+    lessonTotalTime: number
+  }
 }
 
 interface LessonComponentMap {
-  [grade: string]: SlugComponentMap
+  [grade: string]: SlugToLesson
 }
 
 export const lessonComponentMapping:LessonComponentMap = {
-  "10": {"straight-line-graphs": StraightLineGraphs},
-  "11": {"exponents-and-surds": ExponentsAndSurds} 
+  "10": {"straight-line-graphs": {lessonComp: StraightLineGraphs, lessonTotalTime: 30}},
+  "11": {"exponents-and-surds": {lessonComp: ExponentsAndSurds, lessonTotalTime: 50}} 
 }

@@ -36,7 +36,7 @@ export default function QuestionCard({ currentQuestion, onAnswered, questionInde
       </div>
 
       {/* QUESTION */}
-      <span className="text-deep-navy text-base my-2 pl-1"><MathsText text={currentQuestion.question} /></span>
+      <span className="text-deep-navy text-base my-2 pl-1"><MathsText text={currentQuestion.question} styling="text-base"/></span>
 
       {/* OPTIONS */}
       {currentQuestion.options.map((option, i) => 
@@ -57,7 +57,7 @@ export default function QuestionCard({ currentQuestion, onAnswered, questionInde
           <span className="flex items-center justify-center w-7 h-7 shrink-0 rounded-full bg-brand-blue/70 border-2 border-white
                   text-white text-xs ring-1 ring-brand-blue font-medium shadow-[0_0_8px_2px_var(--color-brand-blue)]/55" // TODO: update styling when isAnswered is true
           >{String.fromCharCode(i + 65)}</span>
-          <MathsText text={option} />
+          <MathsText text={option} styling="text-base"/>
         </button>
       )}
 
@@ -68,7 +68,7 @@ export default function QuestionCard({ currentQuestion, onAnswered, questionInde
           ? ""
           : "hidden"
         }`}
-      ><MathsText text={currentQuestion.answerExplanation}/></div>
+      ><MathsText text={currentQuestion.answerExplanation} styling="text-base"/></div>
 
   </div>
 }
