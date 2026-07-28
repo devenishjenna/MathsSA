@@ -52,25 +52,19 @@ interface ArrowProps {
   y2: number
   reveal: number
   styling: string
-  headReveal?: number
   label?: string
-  labelOffset?: { x: number; y: number } // nudge the label away from the line
+  labelOffset?: { x: number; y: number } // shift the label away from the line
+  labelReveal?: number
+  labelStyling?: string
 }
 
-export function Arrow({
-  x1, y1, x2, y2, reveal, styling, headReveal = 0.15,
-  label, labelOffset = { x: 0, y: -10 },
-}: ArrowProps) {
+export function Arrow({x1, y1, x2, y2, reveal, styling, label, labelOffset = { x: -25, y: -10 }, labelReveal, labelStyling }: ArrowProps) {
   const length = Math.hypot(x2 - x1, y2 - y1)
-  const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI)
-
-  const headOpacity = remap(reveal, 0, headReveal)
-  const lineProgress = remap(reveal, headReveal, 1)
-  const lineOpacity = tailFade(lineProgress, 0.4)
+  const angle = Math.floor(Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI)) // angle in degrees
 
   return (
     <>
-      <g transform={`translate(${x2}, ${y2}) rotate(${angle})`} opacity={headOpacity}>
+      <g transform={`translate(${x2}, ${y2}) rotate(${angle})`} opacity={reveal}>
         <polyline points="-10 -7, 0 0, -10 7" fill="none" strokeLinecap="round" className={`${styling}`} />
       </g>
 
@@ -79,7 +73,7 @@ export function Arrow({
         className={`${styling}`}
         strokeLinecap="round"
         strokeDasharray={length}
-        strokeDashoffset={length * (lineProgress) + length}
+        strokeDashoffset={-length * (1 - reveal)}
         opacity={reveal}
       />
 
@@ -87,8 +81,8 @@ export function Arrow({
         <text
           x={x1 + labelOffset.x}
           y={y1 + labelOffset.y}
-          className={`text-base`}
-          opacity={reveal}
+          className={labelStyling}
+          opacity={labelReveal}
         >
           {label}
         </text>

@@ -11,50 +11,52 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   const T = totalLessonTime
 
   // ---------- TIMELINE ----------
-  // Frame 1: main line + two points being plotted
+  // Scene 1: main line + two points being plotted
   const dotReveal     = segmentProgress(progress, 0, 1)
-  const mainLineReveal = segmentProgress(progress, 1, 2)
+  const mainLineReveal = segmentProgress(progress, 1, 3)
+  const formulaReveal = segmentProgress(progress, 3, 5)
 
-  // Frame 2: y = mx + c, gradient + y-intercept labels
-  const gradientArrowRev  = segmentProgress(progress, 2, 2.5)
-  const gradientLabelRev  = segmentProgress(progress, T * 0.30, T * 0.37)
-  const yIntArrowRev      = segmentProgress(progress, T * 0.38, T * 0.44)
-  const yIntLabelRev      = segmentProgress(progress, T * 0.40, T * 0.47)
+  // Scene 2: y = mx + c, gradient + y-intercept labels
+  const gradientArrowRev  = segmentProgress(progress, 5, 5.5)
+  const gradientLabelRev  = segmentProgress(progress, 5.5, 6)
+  const yIntArrowRev      = segmentProgress(progress, 10, 10.5)
+  const yIntLabelRev      = segmentProgress(progress, 10.5, 11)
 
-  // // Frame 3: "m: gradient" + m+ / m- mini diagrams
-  // const mHeadingRev       = segmentProgress(progress, T * 0.48, T * 0.53)
-  // const mUnderlineRev     = segmentProgress(progress, T * 0.53, T * 0.57)
-  // const mPlusLabelRev     = segmentProgress(progress, T * 0.58, T * 0.61)
-  // const mPlusLineRev      = segmentProgress(progress, T * 0.61, T * 0.67)
-  // const mMinusLabelRev    = segmentProgress(progress, T * 0.68, T * 0.71)
-  // const mMinusLineRev     = segmentProgress(progress, T * 0.71, T * 0.77)
+  // // Scene 3: "m: gradient" + m+ / m- mini diagrams
+  const mHeadingRev       = segmentProgress(progress, T * 0.48, T * 0.53)
+  const mUnderlineRev     = segmentProgress(progress, T * 0.53, T * 0.57)
+  const mPlusLabelRev     = segmentProgress(progress, 1, 2)
+  const mPlusLineRev      = segmentProgress(progress, T * 0.61, T * 0.67)
+  const mMinusLabelRev    = segmentProgress(progress, T * 0.68, T * 0.71)
+  const mMinusLineRev     = segmentProgress(progress, T * 0.71, T * 0.77)
 
-  // // Frame 4: worked example y = 2x + 4
+  // // Scene 4: worked example y = 2x + 4
   // const axesReveal        = segmentProgress(progress, T * 0.79, T * 0.84)
   // const exampleLineRev     = segmentProgress(progress, T * 0.84, T * 0.91)
   // const exampleDotsRev     = segmentProgress(progress, T * 0.89, T * 0.93)
   // const exampleFormulaRev  = segmentProgress(progress, T * 0.94, T)
 
   // ---------- GEOMETRY ----------
-  // Frame 1 line
+  // Scene 1 line
   const p1_dot = { x: 40, y: 168 }
   const p2_dot = { x: 220, y: 55 }
   const p1_line = { x: 20, y: 180 }
   const p2_line = { x: 240, y: 42 }
   const mainLen = Math.hypot(p2_line.x - p1_line.x, p2_line.y - p1_line.y)
 
-  // Frame 2
+  // Scene 2
   const formula_xy = { x: 280, y: 80 }
 
-  // // Frame 3 mini gradient icons
-  // const mPlus = { x1: 360, y1: 130, x2: 420, y2: 90 }
-  // const mPlusLen = Math.hypot(mPlus.x2 - mPlus.x1, mPlus.y2 - mPlus.y1)
-  // const mMinus = { x1: 360, y1: 150, x2: 420, y2: 190 }
-  // const mMinusLen = Math.hypot(mMinus.x2 - mMinus.x1, mMinus.y2 - mMinus.y1)
-  // const underline = { x1: 300, y1: 38, x2: 420, y2: 42 }
-  // const underlineLen = Math.hypot(underline.x2 - underline.x1, underline.y2 - underline.y1)
+  // // Scene 3 mini gradient icons
+  const mPlus = { x1: 270, y1: 140, x2: 360, y2: 130 }
+  const mPlusLen = Math.hypot(mPlus.x2 - mPlus.x1, mPlus.y2 - mPlus.y1)
+  const mMinus = { x1: 270, y1: 180, x2: 360, y2: 130 }
+  const mMinusLen = Math.hypot(mMinus.x2 - mMinus.x1, mMinus.y2 - mMinus.y1)
+  const underline = { x1: 300, y1: 38, x2: 420, y2: 42 }
+  const underlineLen = Math.hypot(underline.x2 - underline.x1, underline.y2 - underline.y1)
+  const yInter = { x: 270 , y: 240 }
 
-  // // Frame 4 axes + line (y = 2x + 4), origin at (330,240), 15px per unit
+  // // Scene 4 axes + line (y = 2x + 4), origin at (330,240), 15px per unit
   // const originX = 330
   // const originY = 240
   // const scale = 15
@@ -67,30 +69,8 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
 
   return (
     <svg viewBox="0 0 500 300" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <defs>
 
-        {/* clip rects grow left-to-right to simulate handwriting */}
-        {/* <clipPath id="clipGradientLabel">
-          <rect x="130" y="35" width={90 * gradientLabelRev} height="30" />
-        </clipPath>
-        <clipPath id="clipYIntLabel">
-          <rect x="0" y="150" width={100 * yIntLabelRev} height="30" />
-        </clipPath>
-        <clipPath id="clipMHeading">
-          <rect x="300" y="15" width={130 * mHeadingRev} height="30" />
-        </clipPath>
-        <clipPath id="clipMPlusLabel">
-          <rect x="305" y="115" width={45 * mPlusLabelRev} height="25" />
-        </clipPath>
-        <clipPath id="clipMMinusLabel">
-          <rect x="305" y="175" width={45 * mMinusLabelRev} height="25" />
-        </clipPath>
-        <clipPath id="clipExFormula">
-          <rect x="300" y="80" width={150 * exampleFormulaRev} height="45" />
-        </clipPath> */}
-      </defs>
-
-      {/* ===================== FRAME 1: the line itself ===================== */}
+      {/* ===================== Scene 1: the line itself ===================== */}
       <line
         x1={p1_line.x} y1={p1_line.y} x2={p2_line.x} y2={p2_line.y}
         stroke="#378ADD" strokeWidth={3} strokeLinecap="round"
@@ -100,47 +80,51 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
       <circle cx={p1_dot.x} cy={p1_dot.y} r={5 * Math.min(1, dotReveal * 1.4)} fill="#0C447C" opacity={dotReveal}/>
       <circle cx={p2_dot.x} cy={p2_dot.y} r={5 * Math.min(1, dotReveal * 1.4)} fill="#0C447C" opacity={dotReveal} />
 
-      {/* ===================== FRAME 2: y = mx + c + labels ===================== */}
-      <Reveal x={formula_xy.x} y={formula_xy.y} width={300} height={100} reveal={segmentProgress(progress, 2, 3)}>
+      {/* ===================== Scene 2: y = mx + c + labels ===================== */}
+      <Reveal x={formula_xy.x} y={formula_xy.y} width={300} height={100} reveal={formulaReveal}>
         <MathsTextFO x={formula_xy.x} y={formula_xy.y} width={300} height={100} styling="text-3xl"// TODO: this could probably be inheritted from reveal? 
           >$y = mx + c$
         </MathsTextFO>
       </Reveal>
 
-      <Arrow x1={formula_xy.x + 100} y1={formula_xy.y - 40} x2={formula_xy.x + 90} y2={formula_xy.y} reveal={gradientArrowRev} styling="stroke-indigo-500 stroke-[3px]" label="gradient"/>
+      <Arrow x1={formula_xy.x + 100} y1={formula_xy.y - 40} x2={formula_xy.x + 85} y2={formula_xy.y + 10}
+            reveal={gradientArrowRev} styling="stroke-orange-500 stroke-[3px]" label="gradient" labelReveal={gradientLabelRev} labelOffset={{x: -30, y: -10}} labelStyling="text-lg fill-orange-500"/>
+      <Arrow x1={formula_xy.x + 200} y1={formula_xy.y - 40} x2={formula_xy.x + 180} y2={formula_xy.y + 10}
+            reveal={yIntArrowRev} styling="stroke-green-500 stroke-[3px]" label="y-intercept" labelOffset={{x: -30, y: -10}} labelReveal={yIntLabelRev} labelStyling="text-lg fill-green-500"/>
 
-     {/* gradient arrow, pointing at the slope of the line */}
-  {/* <line
-      //   x1={155} y1={100} x2={165} y2={120}
-      //   stroke="#132B90" strokeWidth={1.5}
-      //   markerEnd="url(#arrowhead)"
-      //   strokeDasharray={Math.hypot(10, 55)}
-      //   strokeDashoffset={Math.hypot(10, 55) * (1 - gradientArrowRev)}
-      //   opacity={tailFade(gradientArrowRev, 0.4)}
-      // />
-      <g clipPath="url(#clipGradientLabel)">
-        <text x="130" y="30" fontSize="14" fontFamily="sans-serif" fill="#E07B39">
-          gradient
-        </text>
-      </g> */}
-
-      {/* y-intercept arrow, pointing at the start point */}
-      {/* <line
-        x1={20} y1={160} x2={p1_line.x - 8} y2={p1_line.y - 5}
-        stroke="#4CAF50" strokeWidth={1.5} filter="url(#rough)"
-        markerEnd="url(#arrowhead)"
-        strokeDasharray={Math.hypot(42, 45)}
-        strokeDashoffset={Math.hypot(42, 45) * (1 - yIntArrowRev)}
-        opacity={tailFade(yIntArrowRev, 0.4)}
+      {/* ===================== Scene 3: gradient sign explainer ===================== */}
+      <rect
+        x={mPlus.x1 - 10}
+        y={mPlus.y1 - 5}
+        width={Math.abs(mMinus.x1 - mPlus.x1) + 250}
+        height={Math.abs(mMinus.y1 - mPlus.y1) + 45}
+        fill="none"
+        stroke-dasharray="5"
+        className="stroke-orange-500 stroke-2"
       />
-      <g clipPath="url(#clipYIntLabel)">
-        <text x="0" y="150" fontSize="14" fontFamily="sans-serif" fill="#4CAF50">
-          y-intercept
-        </text>
-      </g> */}
+      <Reveal x={mPlus.x1} y={mPlus.y1} width={100} height={100} reveal={1}>
+        <MathsTextFO x={mPlus.x1} y={mPlus.y1} width={100} height={100} styling="text-orange-500 text-xl">$m +$</MathsTextFO>
+      </Reveal>
 
-      {/* ===================== FRAME 3: gradient sign explainer ===================== */}
-      {/* <g clipPath="url(#clipMHeading)">
+      <Reveal x={mMinus.x1} y={mMinus.y1} width={100} height={100} reveal={1}>
+        <MathsTextFO x={mMinus.x1} y={mMinus.y1} width={100} height={100} styling="text-orange-500 text-xl">$m -$</MathsTextFO>
+      </Reveal>
+
+    <rect
+      x={yInter.x - 10}
+      y={yInter.y - 5}
+      width={Math.abs(mMinus.x1 - mPlus.x1) + 250}
+      height={50}
+      fill="none"
+      stroke-dasharray="5"
+      className="stroke-green-500 stroke-2"
+    />
+    <Reveal x={yInter.x} y={yInter.y} width={100} height={100} reveal={1}>
+      <MathsTextFO x={yInter.x} y={yInter.y} width={100} height={100} styling="text-green-500 text-xl">$c$</MathsTextFO>
+    </Reveal>
+
+{/*       
+      <g clipPath="url(#clipMHeading)">
         <text x="300" y="30" fontSize="18" fontFamily="sans-serif" fill="#333">
           <tspan fontWeight="bold">m:</tspan> gradient
         </text>
@@ -172,7 +156,7 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
         strokeDashoffset={mMinusLen * (1 - mMinusLineRev)}
       /> */}
 
-      {/* ===================== FRAME 4: worked example y = 2x + 4 ===================== */}
+      {/* ===================== Scene 4: worked example y = 2x + 4 ===================== */}
       {/* <line
         x1={xAxis.x1} y1={xAxis.y1} x2={xAxis.x2} y2={xAxis.y2}
         stroke="#333" strokeWidth={2}
