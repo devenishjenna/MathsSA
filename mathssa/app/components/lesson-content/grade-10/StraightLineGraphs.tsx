@@ -29,6 +29,14 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   const yBoxRev           = segmentProgress(progress, 17, 18)
   const yRev              = segmentProgress(progress, 18, 20)
 
+  // Scene 4: worked example y = 2x + 4 (20s-30s), starts on a blank page
+  const earlyScenesOpacity = 1 - segmentProgress(progress, 20, 20.5)
+  const formula2Reveal     = segmentProgress(progress, 21, 22.5)
+  const axesReveal         = segmentProgress(progress, 22.5, 24)
+  const lineReveal2        = segmentProgress(progress, 24, 26.5)
+  const dotsReveal2        = segmentProgress(progress, 26.5, 27.5)
+  const interceptLabelRev  = segmentProgress(progress, 27.5, 29)
+
   // ---------- GEOMETRY ----------
   // Scene 1 line
   const p1_dot = { x: 40, y: 168 }
@@ -48,9 +56,20 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
   const mPlusLen = Math.hypot(mPlus.x2 - mPlus.x1, mPlus.y2 - mPlus.y1)
   const mMinusLen = Math.hypot(mMinus.x2 - mMinus.x1, mMinus.y2 - mMinus.y1)
 
+  // Scene 4 geometry (origin at (150,220), 20px per unit)
+  const formula2_xy = { x: 150, y: 8 }
+  const xAxis = { x1: 50, y1: 220, x2: 320, y2: 220 }
+  const yAxis = { x1: 150, y1: 270, x2: 150, y2: 60 }
+  const line2_p1 = { x: 90, y: 260 }    // (-3, -2)
+  const line2_p2 = { x: 190, y: 60 }    // (2, 8)
+  const line2Len = Math.hypot(line2_p2.x - line2_p1.x, line2_p2.y - line2_p1.y)
+  const yIntercept2 = { x: 150, y: 140 } // (0, 4)
+  const xIntercept2 = { x: 110, y: 220 } // (-2, 0)
+
   return (
     <svg viewBox="0 0 500 300" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
 
+      <g opacity={earlyScenesOpacity}>
       {/* ===================== Scene 1: the line itself ===================== */}
       <line
         x1={p1_line.x} y1={p1_line.y} x2={p2_line.x} y2={p2_line.y}
@@ -107,6 +126,32 @@ export default function StraightLineGraphs({ progress, totalLessonTime }: Lesson
     <Reveal x={yInter.x} y={yInter.y} width={100} height={100} reveal={yRev}>
       <MathsTextFO x={yInter.x} y={yInter.y} width={100} height={100} styling="text-green-500 text-2xl">$c$</MathsTextFO>
     </Reveal>
+      </g>
+
+      {/* ===================== Scene 4: y = 2x + 4 worked example ===================== */}
+      <Reveal x={formula2_xy.x} y={formula2_xy.y} width={200} height={50} reveal={formula2Reveal}>
+        <MathsTextFO x={formula2_xy.x} y={formula2_xy.y} width={200} height={50} styling="text-3xl text-center">
+          $y = 2x + 4$
+        </MathsTextFO>
+      </Reveal>
+
+      <Arrow x1={xAxis.x1} y1={xAxis.y1} x2={xAxis.x2} y2={xAxis.y2}
+            reveal={axesReveal} styling="stroke-slate-400 stroke-2" />
+      <Arrow x1={yAxis.x1} y1={yAxis.y1} x2={yAxis.x2} y2={yAxis.y2}
+            reveal={axesReveal} styling="stroke-slate-400 stroke-2" />
+
+      <line
+        x1={line2_p1.x} y1={line2_p1.y} x2={line2_p2.x} y2={line2_p2.y}
+        stroke="#378ADD" strokeWidth={3} strokeLinecap="round"
+        strokeDasharray={line2Len}
+        strokeDashoffset={line2Len * (1 - lineReveal2)}
+      />
+
+      <circle cx={yIntercept2.x} cy={yIntercept2.y} r={5 * Math.min(1, dotsReveal2 * 1.4)} fill="#0C447C" opacity={dotsReveal2} />
+      <circle cx={xIntercept2.x} cy={xIntercept2.y} r={5 * Math.min(1, dotsReveal2 * 1.4)} fill="#0C447C" opacity={dotsReveal2} />
+
+      <text x={yIntercept2.x + 8} y={yIntercept2.y - 8} className="text-sm fill-slate-600" opacity={interceptLabelRev}>(0, 4)</text>
+      <text x={xIntercept2.x - 40} y={xIntercept2.y + 20} className="text-sm fill-slate-600" opacity={interceptLabelRev}>(-2, 0)</text>
 
     </svg>
   )
