@@ -59,35 +59,11 @@ export default function LessonWrapper({ activeTopic, grade }: LessonWrapperProps
   return (
     <div className="border-brand-blue border-2 rounded-xl h-full flex flex-col overflow-hidden">
       {/* VIDEO */}
-      <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-        <LessonComponent progress={progress} totalLessonTime={totalLessonTime}/>
-      </div>
-
-      {/* CONTROL PANEL */}
-      <div className="px-1 shrink-0">
-        <input
-          type="range"
-          min={0}
-          max={totalLessonTime} 
-          step={0.001} // the steps that can be displayed
-          value={progress}
-          onChange={e => setProgress(parseFloat(e.target.value))}
-          className="w-full"
-        />
-        <div className="flex gap-2 justify-between">
-          <button
-            className="cursor-pointer border-2 rounded-full w-6 h-6 flex justify-center items-center"
-            onClick={() => {
-              if (progress === totalLessonTime) { // replay functionality
-                setProgress(0)
-              }
-              setIsPlaying(!isPlaying)
-            }}
-          >
-            {isPlaying ? '❚❚' : '▶'}
-          </button>
-          <span>progress bar: {progress}</span>
-        </div>
+      <div className="flex-1 min-h-0 overflow-hidden">
+        <video controls className="w-full h-full object-cover">
+          <source src="/videos/StraightLine.mp4" type="video/mp4" />
+        Your browser doesn't support video.
+        </video>
       </div>
     </div>
   )
