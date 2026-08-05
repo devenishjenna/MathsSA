@@ -1,4 +1,4 @@
-import { useId, ReactNode, Children } from "react";
+import { useId, ReactNode } from "react";
 
 import MathsText from "../MathsText";
 
@@ -36,14 +36,6 @@ export function MathsTextFO({ x, y, width, height, styling, children }: MathsTex
     <MathsText text={children} styling={`${styling}`}/>
   </foreignObject>
 } 
-
-function tailFade(reveal: number, from = 0.7) {
-  return Math.min(1, Math.max(0, (reveal - from) / (1 - from)))
-}
-
-function remap(value: number, from: number, to: number) {
-  return Math.min(1, Math.max(0, (value - from) / (to - from)))
-}
 
 interface ArrowProps {
   x1: number
