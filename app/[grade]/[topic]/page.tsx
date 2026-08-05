@@ -24,7 +24,7 @@ export default async function TopicPage({ params, searchParams }: TopicPageProps
 if (!activeTopic) notFound()
 
   return (
-    <main className="p-2 h-[calc(100vh-60px)] flex flex-col">
+    <main className="p-2 h-[calc(100dvh-60px)] flex flex-col">
       {/* STICKY TOP SECTION */}
       <div className="shrink-0">
         {/* BREADCRUMB */}
