@@ -1,0 +1,13 @@
+{"timestamp":"00:23:13.622","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.626","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection:\" Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.629","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection: \" Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.713","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.716","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.746","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.747","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection:\" Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.748","source":"Server","level":"ERROR","message":"⨯ \"unhandledRejection: \" Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.772","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.774","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.777","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.778","source":"Server","level":"ERROR","message":"Error: ENOENT: no such file or directory, scandir '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa/app'"}
+{"timestamp":"00:23:13.820","source":"Server","level":"ERROR","message":"⨯ Module not found: Error: Can't resolve 'next-flight-client-entry-loader' in '/Users/jennadevenish/Documents/Coding/web-dev/MathsSA/mathssa'"}
